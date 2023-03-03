@@ -4,144 +4,147 @@ ___
 
 ## Basic
 
-### **git init**
+### ```git init```
 
 Initialise a Git repository in the current working directory. 
 
-### **git status**
+### ```git status```
 
 Show the status of the current git repository (changes not staged, committed or pushed, current branch).
 
-- **git add \<new-file>**
+### ```git add \<new-file>```
 
 Begin tracking the given file. 
 
-- **git commit -m "commit message"**
+### ```git commit -m "commit message"```
 
 Creates a new commit with the staged changes and the given message. 
 
-- **git merge \<branch-name>** 
+### ```git merge \<branch-name>``` 
 
-Merges the given branch into the currently selected (active) branch. Can also be written explicitly: **git merge \<target-branch> \<source-branch>**. 
+Merges the given branch into the currently selected (active) branch. Can also be written explicitly: ```git merge \<target-branch> \<source-branch>```. 
 
-- **git log**
+### ```git log```
 
-**git log** - Verbose list of commits on current branch.
+- ```git log``` - Verbose list of commits on current branch.
 
-**git log --oneline** - Condenses output to one line for each commit. 
+- ```git log --oneline``` - Condenses output to one line for each commit. 
 
-**git log --oneline --all --graph** - Creates an acyclic graph of the entire (--all) commit history.
+- ```git log --oneline --all --graph``` - Creates an acyclic graph of the entire (--all) commit history.
 
 ___
 
 ## Comparing
 
-- **git diff** 
+### ```git diff``` 
 
 Compares the working directory with the index and shows changes.
 
-- **git diff \<branch-name>**
+- ```git diff \<branch-name>```
 
-Compares branch with the current working directory (e.g. **git diff \<branch-name> \<working-directory>**).
+Compares branch with the current working directory (e.g. ```git diff \<branch-name> \<working-directory>```).
 
-- **git diff --cached / --staged**
+- ```git diff --cached / --staged```
 
 Compares the files in Git's object database with the changes added to the index. 
 
-- **git diff target-branch source-branch**
+- ```git diff target-branch source-branch```
 
 Compares target-branch to source branch. 
 
-- **git diff --word-diff**
+- ```git diff --word-diff```
 
 Shows differences on same line (more compact view).
 
-- **git diff \<commit-id-a> \<commit-id-b>**
+- ```git diff \<commit-id-a> \<commit-id-b>```
 
 Compares differences between commits using commit IDs. 
 
-- **git diff HEAD~1 HEAD**
+- ```git diff HEAD~1 HEAD```
 
 Compare differences between heads. HEAD\~1 (also written as HEAD\~) references the direct parent, HEAD\~2 references the grandparent and so on. In instances of multiple direct parents, HEAD^1 references the first parent and HEAD^2 references the second. This notation can be combined: HEAD^1\~2 references the grandparents of the first parent of HEAD (the current commit).
 ___
 
 ## Branching
-- **git branch**
+
+### ```git branch```
 
 Check which branch is currently active. 
 
-- **git branch -optional \<new-branch>**
+- ```git branch -optional \<new-branch>```
 
 Create a new branch with the name \<new-branch>. Options can include the -d flag (delete), -D (force delete), m/M (move/force move [also used to rename]) and c/C (copy/force copy).
 
-- **git switch \<branch-name>**
+### ```git switch \<branch-name>```
 
 Switch to the given branch. 
 
 ___
 ## Undoing 
 
-- **git restore \<file-name>**
+### ```git restore \<file-name>```
 
-Discards changes in current working directory (essentially opposite of **git add** command). Takes a copy of a file in the index and overwrites the file in the current directory. Works for multiple files. 
+Discards changes in current working directory (essentially opposite of ```git add``` command). Takes a copy of a file in the index and overwrites the file in the current directory. Works for multiple files. 
 
-- **git restore --staged \<file-name>**
+- ```git restore --staged \<file-name>```
 
 Unstages the specified file, restoring from the object database. 
 
-- **git rm \<file-name>**
+### ```git rm \<file-name>```
 
 Deletes file from current working directory and removes from index. Use commit to confirm the deletion, or restore to abort it. 
 
-- **git rm -r \<directory>**
+- ```git rm -r \<directory>```
 
 Recursively deletes all the files in the directory you specify. Use commit to confirm or restore to abort. 
 
-- **git mv \<file-name-a> \<file-name-b>**
+### ```git mv \<file-name-a> \<file-name-b>```
 
 Moves or renames a tracked file. Updates current working directory and index. 
 
-- **git commit -amend -m "amended commit message"** - Changes the message for the last commit on the branch (check that you have a clean working directory with git status first to avoid committing other changes). If you have staged changes use **git restore -staged** to unstage them prior to amending. 
+### ```git commit -amend -m "amended commit message"```
 
-- **git reset \<commit-ID>**
+Changes the message for the last commit on the branch (check that you have a clean working directory with git status first to avoid committing other changes). If you have staged changes use ```git restore -staged``` to unstage them prior to amending. 
+
+### ```git reset \<commit-ID>```
 
 Moves the HEAD *and* the branch to the specified commit. Commit can also be specified using HEAD notation: **git reset HEAD~2**. 
 
-- **git reset --option**
+- ```git reset --option```
 
-##################add something here 
+################## TODO
 
 ___
 
 ## Collaboration
 
--- **git clone \<source-url>**
+### ```git clone \<source-url>```
 
 Retrieve copy of repository from URL. Optionally add the name of the folder you want to add it to (otherwise the remote folder name will be used).
 
-- **git push** 
+### ```git push``` 
 
 Pushes new commit to remote. Requires GitHub username and personal access token (not the password).
 
-- **git push --set-upstream origin \<local-branch>**
+- ```git push --set-upstream origin \<local-branch>```
 
-Push a local branch to remote,  creating a remote tracking branch locally. Can also be performed using a shortcut: **git push -u origin \<local-branch>**. 
+Push a local branch to remote,  creating a remote tracking branch locally. Can also be performed using a shortcut: ```git push -u origin \<local-branch>```. 
 
-- **git remote**
+- ```git remote```
 
 Shows the name of the remote repository (fetch and push). Optional flags **--v** (verbose) and **--vv** (very verbose).
 
-- **git branch --vv** 
+- ```git branch --vv``` 
 
 Will display the remote tracking branches (if any) for each local branch. 
 
-- **git branch --all** 
+- ```git branch --all``` 
 
 Shows all branches including remote tracking branches. Can also use shortcut **-a**. Can be combined with **-v** or **-vv**. 
 
-- **git pull** 
+- ```git pull``` 
 
-#############################
+############################# TODO
 
 When you invoke **git pull** you should be on the branch which needs to be updated. 
 
@@ -242,14 +245,19 @@ Lists all the options you've set, global and local. The **--show-origin** flag s
 - Invoke the ```git commit``` command with no flags. This will bring up your default editor so you can make a longer, more meaningful and commit message with the benefits of formatting. 
 - Focus on the *why* of the change, not the *how* or the *what*. 
 
-feat: update CSS style names to be consistent (#6174)
-TYPE  COMMIT MESSAGE                          TICKET #
+| feat: | update CSS style names to be consistent | (#6174) |
+|:-----:|:---------------------------------------:|:--------|
+| TYPE  | COMMIT MESSAGE                          | TICKET #|
 
-feat: use this when introducing a new feature or enhancement
-fix: use this when fixing a bug
-docs: use this to describe and documentation change
-chore: use this when you make a change that affects tooling, like Git (e.g. modifying the .gitignore file)
-test: use this when you introduce or modify tests
+**feat**: use this when introducing a new feature or enhancement
+
+**fix**: use this when fixing a bug
+
+**docs**: use this to describe and documentation change
+
+**chore**: use this when you make a change that affects tooling, like Git (e.g. modifying the .gitignore file)
+
+**test**: use this when you introduce or modify tests
 
 ---
 
