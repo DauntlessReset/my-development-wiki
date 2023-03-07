@@ -272,6 +272,8 @@ To restore a stash: ```git stash pop --index```
 
 Again, these should only really be used if you are stuck in a bad situation such as the one described above. 
 
+You can choose to stash just a single file, or individual changes from within files. If you pass the ```-p``` option (or ```---patch```) to ```git stash```, it will iterate through each changed hunk in your working copy and ask whether you wish to stash it. 
+
 ### ```git relog```
 
 Short for reference log. Is updated every time HEAD moves. Is stored FIFO. 
