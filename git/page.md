@@ -6,7 +6,7 @@
 
 ### ```git init```
 
-Initialise a Git repository in the current working directory. 
+Initialise a Git repository in the current working directory. This is the first command you run when started a Git repo. 
 
 ### ```git status```
 
