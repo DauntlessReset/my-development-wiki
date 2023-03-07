@@ -256,8 +256,6 @@ You can specify a commit, otherwise Git will tag the current commit pointed to b
 
 You can pull and push tags using the **--tags** flag.
 
-TODO I got up to here on friday --------------------
-
 ### ```git cherry-pick <commit-id>``` 
 
 Use to copy a specific commit to another branch. 
@@ -290,7 +288,7 @@ Do not rebase public commits, as the commit IDs are changed by this process.
 
 ### Good Commit Messages
 
-- Invoke the ```git commit``` command with no flags. This will bring up your default editor so you can make a longer, more meaningful and commit message with the benefits of formatting. 
+- Invoke the ```git commit``` command with no flags. This will bring up your default editor so you can make a longer, more meaningful commit message with the benefits of formatting. 
 - Focus on the *why* of the change, not the *how* or the *what*. 
 
 **Header**
@@ -307,7 +305,7 @@ Do not rebase public commits, as the commit IDs are changed by this process.
 
 **fix**: use this when fixing a bug
 
-**docs**: use this to describe and documentation change
+**docs**: use this to describe a documentation change
 
 **chore**: use this when you make a change that affects tooling, like Git (e.g. modifying the .gitignore file)
 
@@ -323,43 +321,53 @@ Do not rebase public commits, as the commit IDs are changed by this process.
 
 # Git Terms
 
-# Branches
+## Branches
 
 Branches allow you to work on multiple tasks at the same time. In Git you are always working on a branch. In a typical workflow, some branches are treated as "integration" branches to collect the work done in other branches. In contrast, day-to-day work is done in "feature" branches.
 
 ## Commits
 
-When you make a commit, Git creates a copy of the files in the index and stores them in the object database. It also creates a commit object that records metadata regarding the commit, including a pointer to the files that were just stored, the author name and email, and the time the commit was made, as well as the commit message. 
+When you make a commit, Git creates a copy of the files in the index and stores them in the object database. It also creates a commit object that records metadata regarding the commit, including a pointer to the files that were just stored, the author name and email, time the commit was made, and the commit message. 
 
 Each commit is identified by a unique string referred to as the commit ID. 
 
-Except for the initial commit, each commit stored the ID of the commit that appeared before it, creating a string of commits referred to as the commit history. 
+Except for the initial commit, each commit stored contains the ID of the commit that appeared before it, creating a string of commits referred to as the commit history. 
 
-##
+## HEAD
 
-HEAD is essentially a pointer that keeps track of which commit is currently checked out 
+HEAD is essentially a pointer that keeps track of which commit is currently checked out. Usually, HEAD points to the currently checked out branches latest commit. However, in detached HEAD state, the HEAD does not point to any branch but rather a specific commit.
 
-TODO NOT SURE IF THIS IS RIGHT -------------------------
+You can see what HEAD points to with:
+
+```cat .git/HEAD```
 
 ### HEAD references
 
 HEAD\~1 (also written as HEAD\~) references the direct parent, HEAD\~2 references the grandparent and so on. In instances of multiple direct parents, HEAD^1 references the first parent and HEAD^2 references the second. This notation can be combined: HEAD^1\~2 references the grandparents of the first parent of HEAD (the current commit).
+### detached HEAD state
 
-### Hunk
+This occurs when you check out a specific commit. A commit made in this state will be lost unless you create a new branch, as it is not associated with a specific branch. Command ```git switch -c /<new-branch-name>```.
+
+You can continue to make edits and commits, but switching away from that commit history means you will abandon your commits (since they are not referenced by a branch).
+## Hunk
 
 Hunks are bite-sized sections of text or code displayed when viewing **diff** output. Each hunk has lines prefixed with a minus or a plus (indicating the changes came from file "a" or "b").
+
+## Git LFS
+
+Git LFS (Large File Storage) is a git extension that reduces the impact of large files in your repository by downloading the relevant versions of them *lazily*. That is, large files are downloaded during the checkout process rather than during cloning or fetching. 
+
+Git LFS does this by replacing large files in your repository with pointers. 
+
+This is because large files stored alongside every commit in a commit history would quickly eat up huge amounts of storage. 
 
 ## Local Tracking Branches 
 
 ## Pull (Github)
 
-Essentially a merge conducted on GitHub. Distinct from the git command **pull**. 
+Essentially a merge conducted on GitHub. Distinct from the git command **pull**. Requires oversight and approval from the team to finalise the merge. 
 
-## detached HEAD state
 
-This occurs when you check out a specific commit. A commit made in this state will be lost unless you create a new branch, as it is not associated with a specific branch. Command **git switch -c /<new-branch-name>**.
-
-You can continue to make edits and commits, but switching away from that commit history means you will abandon your commits (since they are not referenced by a branch).
 
 ---
 
@@ -368,12 +376,14 @@ You can continue to make edits and commits, but switching away from that commit 
 
 **Keep commits focused on a discrete task**
 
-To aid development and to ensure that commit messages are concise, it is strongly recommended that each commit is contained to a single issue, such as fixing a bug or implementing something distinct. 
+To aid development and to ensure that commit messages are concise, it is strongly recommended that each commit is contained to a single issue, such as fixing a bug or implementing something distinct. Refer to the commit message conventions for further information. 
 
 **Merging in collaborative projects should be done in Github via pull**
 
 When merging changes into main/master, you should do this via Github instead of merging remotely and pushing the commit to remote. This is so your colleagues have a chance to examine your changes, provide any feedback and catch and issues that may exist. 
 
+***Please note that while this is normal practice, due to our small team, we do not follow this convention.***
+
 **Fetch early and often**
 
-Use **git fetch -p** or **git fetch --prune** to update your remote tracking branches often to ensure you know what's in remote and whether to delete any unnecessary local branches. 
+Use **git fetch -p** or **git fetch --prune** to update your remote tracking branches often to ensure you know what's in remote and whether to delete any unnecessary local branches. This helps prevent merge hell later on. 
