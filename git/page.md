@@ -365,6 +365,8 @@ This is because large files stored alongside every commit in a commit history wo
 
 ## Local Tracking Branches 
 
+Local tracking branches are a local representation of the state of the remote branches, based on the last time remote was contacted. They are like the local repository's mental image of the state of the remote branches. ```git fetch``` updates your tracking branches. 
+
 ## Pull (Github)
 
 Essentially a merge conducted on GitHub. Distinct from the git command **pull**. Requires oversight and approval from the team to finalise the merge. 
