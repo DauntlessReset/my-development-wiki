@@ -6,7 +6,7 @@
 
 ### ```git init```
 
-Initialise a Git repository in the current working directory. 
+Initialise a Git prepository in the current working directory. Adding some information that I really don't think is relevant in the slightest.
 
 ### ```git status```
 
