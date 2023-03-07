@@ -33,3 +33,9 @@ CMD ["node", "src/index.js"]```
 The ```-t-``` flag tags the image. It is just a human-readable name for the generated image. 
 
 The ```.``` at the end of the command tells Docker to look for the ```Dockerfile``` in the current directory. 
+
+### Starting an App Container
+
+1. Start your container using the ```docker run``` command and specify the name of the image we created:
+
+```docker run -dp 3000:3000 getting-started```
