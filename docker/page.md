@@ -25,3 +25,11 @@ WORKDIR /app
 COPY . . 
 RUN yarn install --production
 CMD ["node", "src/index.js"]```
+
+2. Open the terminal and navigate to the directory with the ```Dockerfile```:
+
+```docker build -t getting started .```
+
+The ```-t-``` flag tags the image. It is just a human-readable name for the generated image. 
+
+The ```.``` at the end of the command tells Docker to look for the ```Dockerfile``` in the current directory. 
