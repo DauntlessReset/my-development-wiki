@@ -10,7 +10,7 @@ Initialise a Git repository in the current working directory. This is the first 
 
 ### ```git status```
 
-Show the status of the current git repository (changes not staged, committed or pushed, current branch).
+Show the status of the current git repository (changes not staged, committed or pushed, current branch). 
 
 ### ```git add <new-file>```
 
@@ -316,7 +316,6 @@ Do not rebase public commits, as the commit IDs are changed by this process.
 - Add a blank line separating the header from the body. 
 - Each list item is prefixed with a hyphen. 
 - Each line item is a sentence with a capital letter, and punctuation if necessary
-
 ---
 
 # Git Terms
