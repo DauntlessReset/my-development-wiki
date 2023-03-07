@@ -376,16 +376,20 @@ Essentially a merge conducted on GitHub. Distinct from the git command **pull**.
 
 # Git Tips
 
-**Keep commits focused on a discrete task**
+## **Keep commits focused on a discrete task**
 
 To aid development and to ensure that commit messages are concise, it is strongly recommended that each commit is contained to a single issue, such as fixing a bug or implementing something distinct. Refer to the commit message conventions for further information. 
 
-**Merging in collaborative projects should be done in Github via pull**
+## **Merging in collaborative projects should be done in Github via pull**
 
 When merging changes into main/master, you should do this via Github instead of merging remotely and pushing the commit to remote. This is so your colleagues have a chance to examine your changes, provide any feedback and catch and issues that may exist. 
 
 ***Please note that while this is normal practice, due to our small team, we do not follow this convention.***
 
-**Fetch early and often**
+## **Fetch early and often**
 
 Use **git fetch -p** or **git fetch --prune** to update your remote tracking branches often to ensure you know what's in remote and whether to delete any unnecessary local branches. This helps prevent merge hell later on. 
+
+## **File naming conventions**
+
+To avoid issues arising from conflicting systems and their sensitivities surrounding lowercase vs uppercase (Windows and Mac/Linux systems handle this differently) it is best to simply avoid using capital letters in file names. Additionally, avoid spaces, instead using hyphens in their stead, e.g. "my-git-repository/the-git-page.md". 
